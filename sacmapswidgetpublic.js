@@ -185,6 +185,7 @@ class CombinedMap extends HTMLElement {
         try{ 
             if(this.google_mapsjs_api_key!= '' && this.fe_gMap === null)    // check if google maps api key is provided in the constructor before calling google maps initialization method
             {
+                console.log("reached init");
                 await this.fe_init_gMap();
             }
         } catch (error) {
@@ -417,13 +418,16 @@ class CombinedMap extends HTMLElement {
                     center: { lat: 50.94195189462832, lng: 6.934832969310373}, 
                     zoom: 8,
                     mapId: 'f61d67e24706f841'
-                });
+
+                })
+                console.log("Gmap loaded");
+                ;
 
                 const clustererScript = document.createElement('script');
                 clustererScript.src = gMap_cluster_src;
                 clustererScript.onerror = () => console.error('Error loading MarkerClusterer library.');
                 clustererScript.onload = () => {
-                    console.log("onload gMap_markerCluster true");
+                    console.log("gmap Marker cluster loaded");
                      this.markerClustererLoaded =  true;
                 resolve();
                 };
@@ -525,6 +529,7 @@ class CombinedMap extends HTMLElement {
 
     /** Sets the Google Maps JavaScript API key and initializes the Google Maps instance. */
     async set_google_mapsjs_api_key(api_key) {
+        console.log("reached init");
         if(this.google_mapsjs_api_key === '' && this.fe_gMap === null)
         {
             this.google_mapsjs_api_key = api_key;
