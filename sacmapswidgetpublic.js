@@ -165,6 +165,7 @@ class CombinedMap extends HTMLElement {
         this.markerClustererLoaded = false;
         this.google_mapsjs_api_key = google_mapsjs_api_key_in_js;
         this.default_map = default_map_in_js;
+        this.gMapLoaded = false;                       // check whether map is loaded from widget api key or by set api key method
         this.init();
     }
 
@@ -186,7 +187,7 @@ class CombinedMap extends HTMLElement {
             if(this.google_mapsjs_api_key!= '' && this.fe_gMap === null)    // check if google maps api key is provided in the constructor before calling google maps initialization method
             {
                 console.log("reached init inside google block");
-                // await this.fe_init_gMap();
+                await this.fe_init_gMap();
             }
         } catch (error) {
             console.error("Error loading google dependencies:", error);
@@ -396,45 +397,50 @@ class CombinedMap extends HTMLElement {
 
     /** Initializes the Google Maps instance by loading the Google Maps API and Marker Clusterer library. */
     async fe_init_gMap() {
-        return new Promise((resolve, reject) => {
-            var script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${this.google_mapsjs_api_key}&callback=initgMap&loading=async&v=weekly&libraries=marker`;
-            script.defer = true;
-            script.onerror = () => {
-                console.error('Error loading Google Maps API');
-                reject(new Error('Error loading Google Maps API'));
-            };
-            document.head.appendChild(script);
-            
-            // Define the callback function that will be executed when the Google Maps API is loaded.
-            window.initgMap = () => {
-                var mapContainer = this.shadowRoot.getElementById('d-gMap');
-                if (mapContainer) {
-                    this.fe_gMap = null;
-                    mapContainer.innerHTML = '';
-                }
-                // Create a new Google Maps instance and initialize it with the provided options (default lat,lng Contigo Consulting AG).  
-                this.fe_gMap = new google.maps.Map(mapContainer, {
-                    center: { lat: 50.94195189462832, lng: 6.934832969310373}, 
-                    zoom: 8,
-                    mapId: 'f61d67e24706f841'
-
-                })
-                console.log("Gmap loaded");
-                ;
-
-                const clustererScript = document.createElement('script');
-                clustererScript.src = gMap_cluster_src;
-                clustererScript.onerror = () => console.error('Error loading MarkerClusterer library.');
-                clustererScript.onload = () => {
-                    console.log("gmap Marker cluster loaded");
-                     this.markerClustererLoaded =  true;
-                resolve();
+        if(this.gMapLoaded === false)
+        {   
+            this.gMapLoaded = true;
+            return new Promise((resolve, reject) => {
+                var script = document.createElement('script');
+                script.src = `https://maps.googleapis.com/maps/api/js?key=${this.google_mapsjs_api_key}&callback=initgMap&loading=async&v=weekly&libraries=marker`;
+                script.defer = true;
+                script.onerror = () => {
+                    console.error('Error loading Google Maps API');
+                    reject(new Error('Error loading Google Maps API'));
                 };
-                document.head.appendChild(clustererScript);
-            };
-            
-        });
+                document.head.appendChild(script);
+                
+                // Define the callback function that will be executed when the Google Maps API is loaded.
+                window.initgMap = () => {
+                    var mapContainer = this.shadowRoot.getElementById('d-gMap');
+                    if (mapContainer) {
+                        this.fe_gMap = null;
+                        mapContainer.innerHTML = '';
+                    }
+                    // Create a new Google Maps instance and initialize it with the provided options (default lat,lng Contigo Consulting AG).  
+                    this.fe_gMap = new google.maps.Map(mapContainer, {
+                        center: { lat: 50.94195189462832, lng: 6.934832969310373}, 
+                        zoom: 8,
+                        mapId: 'f61d67e24706f841'
+    
+                    })
+                    console.log("Gmap loaded");
+                    ;
+    
+                    const clustererScript = document.createElement('script');
+                    clustererScript.src = gMap_cluster_src;
+                    clustererScript.onerror = () => console.error('Error loading MarkerClusterer library.');
+                    clustererScript.onload = () => {
+                        console.log("gmap Marker cluster loaded");
+                         this.markerClustererLoaded =  true;
+                    resolve();
+                    };
+                    document.head.appendChild(clustererScript);
+                };
+                
+            });
+        }
+        
     }
 
       /** Renders the Google Maps with markers based on the coordinate data. */
