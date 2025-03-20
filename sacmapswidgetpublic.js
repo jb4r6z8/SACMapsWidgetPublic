@@ -23,8 +23,8 @@
     const gMap_cluster_src = `https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js`;
 
 
-    const google_mapsjs_api_key = ''; // Google Maps API key.
-    const default_map = "";                           // default map to load  [3 possible values - 'google', 'osm', '' ]  value '' displays datasource overlay
+    const google_mapsjs_api_key_in_js = ''; // Google Maps API key.
+    const default_map_in_js = "";                           // default map to load  [3 possible values - 'google', 'osm', '' ]  value '' displays datasource overlay
 
 
     let tmpl = document.createElement('template');
@@ -163,6 +163,8 @@ class CombinedMap extends HTMLElement {
         this.mapType = 'google';                       // assigning  Current map type (google or osm) based on the toggle button. default checked google.
         this.gMap_markerCluster = null;                 // Google Maps Marker Clusterer instance.
         this.markerClustererLoaded = false;
+        this.google_mapsjs_api_key = google_mapsjs_api_key_in_js;
+        this.default_map = default_map_in_js;
         this.init();
     }
 
