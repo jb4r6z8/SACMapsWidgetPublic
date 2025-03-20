@@ -173,7 +173,7 @@ class CombinedMap extends HTMLElement {
      */
 
     async init() {
-
+        console.log("reached init");
         try{ 
             await this.fe_init_osMap();     // calls Open Street map initialization method
         } catch (error) {
@@ -185,7 +185,7 @@ class CombinedMap extends HTMLElement {
         try{ 
             if(this.google_mapsjs_api_key!= '' && this.fe_gMap === null)    // check if google maps api key is provided in the constructor before calling google maps initialization method
             {
-                console.log("reached init");
+                console.log("reached init inside google block");
                 // await this.fe_init_gMap();
             }
         } catch (error) {
