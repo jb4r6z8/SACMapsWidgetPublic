@@ -24,7 +24,7 @@
 
 
     const google_mapsjs_api_key = ''; // Google Maps API key.
-    const default_map = "google"                           // default map to load  [3 possible values - 'google', 'osm', '' ]  value '' displays datasource overlay
+    const default_map = "";                           // default map to load  [3 possible values - 'google', 'osm', '' ]  value '' displays datasource overlay
 
 
     let tmpl = document.createElement('template');
