@@ -183,7 +183,7 @@ class CombinedMap extends HTMLElement {
 
 
         try{ 
-            if(google_mapsjs_api_key!= '' && this.fe_gMap === null)    // check if google maps api key is provided in the constructor before calling google maps initialization method
+            if(this.google_mapsjs_api_key!= '' && this.fe_gMap === null)    // check if google maps api key is provided in the constructor before calling google maps initialization method
             {
                 await this.fe_init_gMap();
             }
@@ -193,7 +193,7 @@ class CombinedMap extends HTMLElement {
         }
 
         // call method set default map to with constructor given value
-        this.set_default_map(default_map);
+        this.set_default_map(this.default_map);
         
         const confirmButton = this.shadowRoot.querySelector('#confirmSource');
         const mapTypeRadios = this.shadowRoot.querySelectorAll('input[name="rbg_mapType"]');
@@ -397,7 +397,7 @@ class CombinedMap extends HTMLElement {
     async fe_init_gMap() {
         return new Promise((resolve, reject) => {
             var script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${google_mapsjs_api_key}&callback=initgMap&loading=async&v=weekly&libraries=marker`;
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${this.google_mapsjs_api_key}&callback=initgMap&loading=async&v=weekly&libraries=marker`;
             script.defer = true;
             script.onerror = () => {
                 console.error('Error loading Google Maps API');
@@ -525,9 +525,9 @@ class CombinedMap extends HTMLElement {
 
     /** Sets the Google Maps JavaScript API key and initializes the Google Maps instance. */
     async set_google_mapsjs_api_key(api_key) {
-        if(google_mapsjs_api_key === '' && this.fe_gMap === null)
+        if(this.google_mapsjs_api_key === '' && this.fe_gMap === null)
         {
-            google_mapsjs_api_key = api_key;
+            this.google_mapsjs_api_key = api_key;
             this.fe_init_gMap();
         }
         
