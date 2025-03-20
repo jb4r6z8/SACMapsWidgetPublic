@@ -175,7 +175,7 @@ class CombinedMap extends HTMLElement {
     async init() {
 
         try{ 
-            // await this.fe_init_osMap();     // calls Open Street map initialization method
+            await this.fe_init_osMap();     // calls Open Street map initialization method
         } catch (error) {
             console.error("Error loading OSM dependencies:", error);
             return false;
@@ -186,7 +186,7 @@ class CombinedMap extends HTMLElement {
             if(this.google_mapsjs_api_key!= '' && this.fe_gMap === null)    // check if google maps api key is provided in the constructor before calling google maps initialization method
             {
                 console.log("reached init",flow);
-                await this.fe_init_gMap();
+                // await this.fe_init_gMap();
             }
         } catch (error) {
             console.error("Error loading google dependencies:", error);
@@ -515,11 +515,10 @@ class CombinedMap extends HTMLElement {
 
     /** Sets the master coordinate data, handling both initial data loading and appending. */
     async set_coordinate_master_data(SAC_COORDINATE_DATA,flag) {
-        if (this.DB_COORDINATE_DATA  && flag === false) { 
-            this.DB_COORDINATE_DATA = [...this.DB_COORDINATE_DATA, ...SAC_COORDINATE_DATA];     // Append new data if existing data exists and flag is false.
-        } else {
-            this.DB_COORDINATE_DATA = SAC_COORDINATE_DATA;  // add first batch of data point.
+        if (!this.DB_COORDINATE_DATA) {
+            this.DB_COORDINATE_DATA = []; 
         }
+        this.DB_COORDINATE_DATA = [...this.DB_COORDINATE_DATA, ...SAC_COORDINATE_DATA];
         this.shadowRoot.querySelector("#loading-text").textContent = `Loaded ${this.DB_COORDINATE_DATA.length} datapoints from SAC...`;
         if (this.dataSource === 'sac' && flag === true) {
             this.shadowRoot.querySelector("#loading-text").textContent = `Inserting ${this.DB_COORDINATE_DATA.length} datapoints into ${this.mapType} Maps...`;
