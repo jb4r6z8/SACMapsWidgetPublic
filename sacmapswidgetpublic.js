@@ -172,10 +172,10 @@ class CombinedMap extends HTMLElement {
      * Initializes the component by loading map dependencies and setting up event listeners.
      */
 
-    async init(flow) {
+    async init() {
 
         try{ 
-            await this.fe_init_osMap();     // calls Open Street map initialization method
+            // await this.fe_init_osMap();     // calls Open Street map initialization method
         } catch (error) {
             console.error("Error loading OSM dependencies:", error);
             return false;
