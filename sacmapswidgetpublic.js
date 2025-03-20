@@ -165,7 +165,7 @@ class CombinedMap extends HTMLElement {
         this.markerClustererLoaded = false;
         this.google_mapsjs_api_key = google_mapsjs_api_key_in_js;
         this.default_map = default_map_in_js;
-        this.init('widget');
+        this.init();
     }
 
     /**
@@ -185,7 +185,7 @@ class CombinedMap extends HTMLElement {
         try{ 
             if(this.google_mapsjs_api_key!= '' && this.fe_gMap === null)    // check if google maps api key is provided in the constructor before calling google maps initialization method
             {
-                console.log("reached init",flow);
+                console.log("reached init");
                 // await this.fe_init_gMap();
             }
         } catch (error) {
