@@ -1,0 +1,76 @@
+{
+	"name": "SAC Maps Widget Developement",
+	"imports": ["planning-model"],
+	"description": "SAC Maps Widget Developement",
+	"newInstancePrefix": "SAC_Maps_Widget",
+	"eula": "",
+	"vendor": "Contigo Consulting AG - MKoshy, JBuergmayr",
+	"license": "",
+	"id": "SAC_Maps_Widget",
+	"version": "1.0.0",
+	"icon": "",
+	"webcomponents": [
+		{
+			"kind": "main",
+			"tag": "com_contigo-consulting_sacmapswidget_developement",
+			"url": "https://github.com/jb4r6z8/SACMapsWidgetPublic/blob/main/sacmapswidgetpublic.js",
+			"integrity": ""	,
+			"ignoreIntegrity": true
+			
+		}		
+	],
+"properties": {
+		"google_mapsjs_api_key": {
+			"type": "string"
+		},
+		"coordinate_master_data": {
+			"type": "PlanningModelMember[]"
+		},
+        "default_map": {
+			"type": "string"
+		},
+		"read_finish": {
+			"type": "boolean"
+		}
+	},
+	"methods": {
+		"set_google_mapsjs_api_key": {
+			"description": "set google maps js api key",
+            "parameters": [
+				{
+					"name": "google_mapsjs_api_key",
+					"type": "string",
+					"description": "google maps js api key"
+				}]
+			},
+        "set_default_map": {
+			"description": "set default map",
+            "parameters": [
+				{
+					"name": "default_map",
+					"type": "string",
+					"description": "set default map"
+				}]
+			},    
+		"set_coordinate_master_data":{
+			"description": "set coordinate master data",
+			"parameters": [
+				{
+					"name": "coordinate_master_data",
+					"type": "PlanningModelMember[]",
+					"description": "coordinate master data"
+				},
+				{
+					"name": "read_finish",
+					"type": "boolean",
+					"description": "flag for read coordinate master data "
+				}
+			]
+		}
+	},
+	"events": {
+		"EVENTW2S_DB_FILL_COORDINATE_DATA": {
+			"description": "read coordinate master data"
+		}
+	}
+}
