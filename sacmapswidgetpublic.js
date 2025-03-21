@@ -699,7 +699,7 @@ class CombinedMap extends HTMLElement {
         overflow:hidden;padding:0px 2px;word-break:normal;}
         .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
         font-weight:normal;overflow:hidden;padding:0px 2px;word-break:normal;}
-        .tg .tg-baqh{text-align:center;vertical-align:top;display: grid;justify-content: center;align-items: center;}
+        .tg .tg-baqh{text-align:center;vertical-align:top;justify-content: center;align-items: center;}
         .tg .tg-jdb5{border-color:#000000;font-weight:bold;text-align:center;vertical-align:bottom}
         .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
         .tg .tg-0lax{text-align:left;vertical-align:top}
