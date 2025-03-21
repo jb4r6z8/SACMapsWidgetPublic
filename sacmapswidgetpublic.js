@@ -723,8 +723,7 @@ class CombinedMap extends HTMLElement {
         </tr>
         <tr>
         <!-- <td class="tg-baqh" colspan="4"><img src="${image_Url}" alt="Image"></td> -->
-        <!-- <td class="tg-baqh" colspan="4"><img src="http://platinpsst:85/ImageDBView/ViewImageOrg.aspx?3680010077251-02" alt="Image"></td> -->
-        <td class="tg-baqh" colspan="4"><img src="https://mridul0007.github.io/istockphoto-1187191122-2048x2048.jpg" alt="Image"></td>
+        <td class="tg-baqh" colspan="4"><img src="http://platinpsst:85/ImageDBView/ViewImageOrg.aspx?3680010077251-02" alt="Image"></td> 
         </tr>
         <tr>
             <td class="tg-0lax">Anbietergruppe:</td>
