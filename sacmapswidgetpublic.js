@@ -731,7 +731,7 @@ class CombinedMap extends HTMLElement {
         </tr>
         <tr>
             <td class="tg-0lax">WT-Gruppe:</td>
-            <td class="tg-0lax">6</td>
+            <td class="tg-0lax">test content to see the fill inside and see how the style work</td>
             <td class="tg-0lax">7</td>
             <td class="tg-0lax">8</td>
         </tr>
