@@ -72,6 +72,7 @@
 
             .leaflet-popup-content-wrapper {
                 overflow-y: auto;
+                padding-top: 10px;
               }
 
             .tg {
