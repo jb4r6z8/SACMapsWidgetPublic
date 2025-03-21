@@ -73,6 +73,7 @@
             .leaflet-popup-content-wrapper {
                 overflow-y: auto;
                 padding-top: 10px;
+                padding: 10px;
               }
 
             .tg {
@@ -281,8 +282,6 @@ class CombinedMap extends HTMLElement {
                     
                     this.fe_set_view_osMap();
                     this.fe_osMap.invalidateSize();
-                    this.fe_osMap.fitBounds(bounds);
-
                 }
             
         }
