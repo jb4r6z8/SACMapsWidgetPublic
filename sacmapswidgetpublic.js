@@ -71,11 +71,14 @@
 
 
             .leaflet-popup-content-wrapper {
-                height: 600px; /* Adjust this value as needed */
                 overflow-y: auto;
-                width:420px;
               }
 
+            .tg {
+                border-collapse: collapse;
+                border-spacing: 0;
+                table-layout: auto;
+            }
             #d-bottom-bar {
                 height: 6%;
                 width: 100%;
