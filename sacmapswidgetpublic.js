@@ -276,8 +276,11 @@ class CombinedMap extends HTMLElement {
 
                 }
                 else
-                {
+                {   
+                    
                     this.fe_set_view_osMap();
+                    this.fe_osMap.invalidateSize();
+                    this.fe_osMap.fitBounds(bounds);
 
                 }
             
