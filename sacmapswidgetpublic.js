@@ -79,6 +79,11 @@
                 border-spacing: 0;
                 table-layout: auto;
             }
+            .tg img {
+                max-width: 100%;
+                height: auto;
+                display: block; /* Remove extra spacing */
+            }
             #d-bottom-bar {
                 height: 6%;
                 width: 100%;
