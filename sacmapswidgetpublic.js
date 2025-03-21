@@ -80,7 +80,7 @@
                 table-layout: auto;
             }
             .tg img {
-                max-width: 100%;
+                max-width: 400px;
                 height: auto;
                 display: block; /* Remove extra spacing */
             }
