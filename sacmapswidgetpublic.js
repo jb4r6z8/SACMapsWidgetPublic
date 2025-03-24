@@ -675,25 +675,24 @@ class CombinedMap extends HTMLElement {
             const obj = SAC_COORDINATE_DATA[i];
             result.push({
                 properties: {
-                    title: obj.TITLE.id, // Extract the id property
-                    lat: obj.LAT.id,     // Extract the id property
-                    long: obj.LNG.id,    // Extract the id property
-                    icon: obj.IconUrl.id, // Extract the id property
-                    image: obj.ImageUrl.id // Extract the id property
+                    title: obj.TITLE.id,
+                    lat: obj.LAT.id,     
+                    long: obj.LNG.id,    
+                    icon: obj.IconUrl.id, 
+                    image: obj.ImageUrl.id 
                 },
-                id: obj.TITLE.id // Extract the id property
+                id: obj.TITLE.id 
             });
         }
         
         this.DB_COORDINATE_DATA = result;
         this.renderMap();
 
-        }
-
     }
+    
 
     /** Database function to parse the loaded CSV data into coordinate objects. */
-    DB_parseCsv(csvData, progressCallback) {
+    DB_parseCsv(csvData, progressCallback){
         const lines = csvData.split('\n');
         const headers = lines[0].split(',');   // header line 
         const result = [];
