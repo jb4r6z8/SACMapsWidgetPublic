@@ -686,6 +686,8 @@ class CombinedMap extends HTMLElement {
         }
         
         this.DB_COORDINATE_DATA = result;
+        this.fe_gMap_markers = [];
+        this.fe_osMap_markers = [];
         this.renderMap();
 
     }
