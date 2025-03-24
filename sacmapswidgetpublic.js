@@ -672,7 +672,7 @@ class CombinedMap extends HTMLElement {
         this.DB_COORDINATE_DATA = [];
         for (let i = 0; i < db_data.length; i++)
         {   
-            const obj = SAC_COORDINATE_DATA[i];
+            const obj = db_data[i];
             result.push({
                 properties: {
                     title: obj.TITLE.id,
