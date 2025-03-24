@@ -1,6 +1,6 @@
 {
 	"name": "SAC Maps Widget Developement",
-	"imports": ["planning-model","ResultSet[]"],
+	"imports": ["planning-model","datasource"],
 	"description": "SAC Maps Widget Developement",
 	"newInstancePrefix": "SAC_Maps_Widget",
 	"eula": "",
@@ -79,8 +79,8 @@
 			"parameters": [
 				{
 					"name": "coordinate_master_data_sel",
-					"type": "PlanningModelMember[]",
-					"description": "coordinate master data"
+					"type": "ResultSet[]",
+					"description": "coordinate master data selection ResultSet"
 				},
 				{
 					"name": "read_finish",

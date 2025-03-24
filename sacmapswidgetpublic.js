@@ -551,7 +551,7 @@ class CombinedMap extends HTMLElement {
         this.shadowRoot.querySelector("#loading-text").textContent = `Loaded ${this.DB_COORDINATE_DATA.length} datapoints from SAC...`;
         if (this.dataSource === 'sac' && read_flag === true) {
             this.shadowRoot.querySelector("#loading-text").textContent = `Inserting ${this.DB_COORDINATE_DATA.length} datapoints into ${this.mapType} Maps...`;
-            await this.renderMap();
+            await this.DB_parse_resultSet(this.DB_COORDINATE_DATA);
         }
     }
 
@@ -664,6 +664,32 @@ class CombinedMap extends HTMLElement {
             this.renderMap();
         };
         reader.readAsText(file);
+    }
+
+    async DB_parse_resultSet(db_data)
+    {   
+        const result = [];
+        this.DB_COORDINATE_DATA = [];
+        for (let i = 0; i < db_data.length; i++)
+        {   
+            const obj = SAC_COORDINATE_DATA[i];
+            result.push({
+                properties: {
+                    title: obj.TITLE.id, // Extract the id property
+                    lat: obj.LAT.id,     // Extract the id property
+                    long: obj.LNG.id,    // Extract the id property
+                    icon: obj.IconUrl.id, // Extract the id property
+                    image: obj.ImageUrl.id // Extract the id property
+                },
+                id: obj.TITLE.id // Extract the id property
+            });
+        }
+        
+        this.DB_COORDINATE_DATA = result;
+        this.renderMap();
+
+        }
+
     }
 
     /** Database function to parse the loaded CSV data into coordinate objects. */
