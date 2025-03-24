@@ -531,25 +531,13 @@ class CombinedMap extends HTMLElement {
     }
 
     /** Sets the master coordinate data, handling both initial data loading and appending. */
-    async set_coordinate_master_data(SAC_COORDINATE_DATA,flag) {
-        if (!this.DB_COORDINATE_DATA) {
+    async set_coordinate_master_data(SAC_COORDINATE_DATA,read_finish_flag,reset_data_flag) {
+        if (reset_data_flag === true) {
             this.DB_COORDINATE_DATA = []; 
         }
         this.DB_COORDINATE_DATA = [...this.DB_COORDINATE_DATA, ...SAC_COORDINATE_DATA];
         this.shadowRoot.querySelector("#loading-text").textContent = `Loaded ${this.DB_COORDINATE_DATA.length} datapoints from SAC...`;
-        if (this.dataSource === 'sac' && flag === true) {
-            this.shadowRoot.querySelector("#loading-text").textContent = `Inserting ${this.DB_COORDINATE_DATA.length} datapoints into ${this.mapType} Maps...`;
-            await this.renderMap();
-        }
-    }
-
-    async set_coordinate_master_data_sel(SAC_COORDINATE_DATA,read_flag,new_flag) {
-        if (new_flag === true) {
-            this.DB_COORDINATE_DATA = []; 
-        }
-        this.DB_COORDINATE_DATA = [...this.DB_COORDINATE_DATA, ...SAC_COORDINATE_DATA];
-        this.shadowRoot.querySelector("#loading-text").textContent = `Loaded ${this.DB_COORDINATE_DATA.length} datapoints from SAC...`;
-        if (this.dataSource === 'sac' && read_flag === true) {
+        if (this.dataSource === 'sac' && read_finish_flag === true) {
             this.shadowRoot.querySelector("#loading-text").textContent = `Inserting ${this.DB_COORDINATE_DATA.length} datapoints into ${this.mapType} Maps...`;
             await this.DB_parse_resultSet(this.DB_COORDINATE_DATA);
         }

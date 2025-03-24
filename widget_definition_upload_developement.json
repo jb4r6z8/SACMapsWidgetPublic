@@ -1,13 +1,13 @@
 {
 	"name": "SAC Maps Widget Developement",
-	"imports": ["planning-model","datasource"],
+	"imports": ["datasource"],
 	"description": "SAC Maps Widget Developement",
 	"newInstancePrefix": "SAC_Maps_Widget",
 	"eula": "",
 	"vendor": "Contigo Consulting AG - MKoshy, JBuergmayr",
 	"license": "",
 	"id": "SAC_Maps_Widget",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"icon": "",
 	"webcomponents": [
 		{
@@ -24,7 +24,7 @@
 			"type": "string"
 		},
 		"coordinate_master_data": {
-			"type": "PlanningModelMember[]"
+			"type": "ResultSet[]"
 		},
         "default_map": {
 			"type": "string"
@@ -32,13 +32,9 @@
 		"read_finish": {
 			"type": "boolean"
 		},
-		"read_new": {
+		"reset_data": {
 			"type": "boolean"
-		},
-		"coordinate_master_data_sel": {
-			"type": "ResultSet[]"
-		}
-		
+		}		
 	},
 	"methods": {
 		"set_google_mapsjs_api_key": {
@@ -64,31 +60,16 @@
 			"parameters": [
 				{
 					"name": "coordinate_master_data",
-					"type": "PlanningModelMember[]",
+					"type": "ResultSet[]",
 					"description": "coordinate master data"
 				},
 				{
 					"name": "read_finish",
 					"type": "boolean",
 					"description": "flag for read coordinate master data "
-				}
-			]
-		},
-		"set_coordinate_master_data_sel":{
-			"description": "set coordinate master data selection",
-			"parameters": [
-				{
-					"name": "coordinate_master_data_sel",
-					"type": "ResultSet[]",
-					"description": "coordinate master data selection ResultSet"
 				},
 				{
-					"name": "read_finish",
-					"type": "boolean",
-					"description": "flag for read coordinate master data "
-				},
-				{
-					"name": "read_new",
+					"name": "reset_data",
 					"type": "boolean",
 					"description": "flag for new coordinate master data read"
 				}
