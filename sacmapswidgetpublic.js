@@ -543,6 +543,18 @@ class CombinedMap extends HTMLElement {
         }
     }
 
+    async set_coordinate_master_data_sel(SAC_COORDINATE_DATA,read_flag,new_flag) {
+        if (new_flag === true) {
+            this.DB_COORDINATE_DATA = []; 
+        }
+        this.DB_COORDINATE_DATA = [...this.DB_COORDINATE_DATA, ...SAC_COORDINATE_DATA];
+        this.shadowRoot.querySelector("#loading-text").textContent = `Loaded ${this.DB_COORDINATE_DATA.length} datapoints from SAC...`;
+        if (this.dataSource === 'sac' && read_flag === true) {
+            this.shadowRoot.querySelector("#loading-text").textContent = `Inserting ${this.DB_COORDINATE_DATA.length} datapoints into ${this.mapType} Maps...`;
+            await this.renderMap();
+        }
+    }
+
     /** Sets the Google Maps JavaScript API key and initializes the Google Maps instance. */
     async set_google_mapsjs_api_key(api_key) {
         // console.log("reached setmaps api key");
@@ -693,6 +705,8 @@ class CombinedMap extends HTMLElement {
         return result;
     }
 
+    
+
     // Table content generator
     fe_generateTableContent(image_Url) {
         return `
@@ -719,7 +733,7 @@ class CombinedMap extends HTMLElement {
             <td class="tg-amwm" colspan="4">WTN: Nicht vorhanden</td>
         </tr>
         <tr>
-            <td class="tg-amwm" colspan="4">VIKTORIAALLEE 44</td>
+            <td class="tg-amwm" colspan="4">VIKTORIAALLEE 44</td>planningmgetresultplannin
         </tr>
         <tr>
         <!-- <td class="tg-baqh" colspan="4"><img src="${image_Url}" alt="Image"></td> -->

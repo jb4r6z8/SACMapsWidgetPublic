@@ -1,6 +1,6 @@
 {
 	"name": "SAC Maps Widget Developement",
-	"imports": ["planning-model"],
+	"imports": ["planning-model","ResultSet[]"],
 	"description": "SAC Maps Widget Developement",
 	"newInstancePrefix": "SAC_Maps_Widget",
 	"eula": "",
@@ -31,7 +31,14 @@
 		},
 		"read_finish": {
 			"type": "boolean"
+		},
+		"read_new": {
+			"type": "boolean"
+		},
+		"coordinate_master_data_sel": {
+			"type": "ResultSet[]"
 		}
+		
 	},
 	"methods": {
 		"set_google_mapsjs_api_key": {
@@ -64,6 +71,26 @@
 					"name": "read_finish",
 					"type": "boolean",
 					"description": "flag for read coordinate master data "
+				}
+			]
+		},
+		"set_coordinate_master_data_sel":{
+			"description": "set coordinate master data selection",
+			"parameters": [
+				{
+					"name": "coordinate_master_data_sel",
+					"type": "PlanningModelMember[]",
+					"description": "coordinate master data"
+				},
+				{
+					"name": "read_finish",
+					"type": "boolean",
+					"description": "flag for read coordinate master data "
+				},
+				{
+					"name": "read_new",
+					"type": "boolean",
+					"description": "flag for new coordinate master data read"
 				}
 			]
 		}
