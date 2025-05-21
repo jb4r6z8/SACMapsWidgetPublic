@@ -656,11 +656,11 @@ class CombinedMap extends HTMLElement {
 
     async DB_parse_resultSet(db_data)
     {   
-        const result = [];
+        let result = [];
         this.DB_COORDINATE_DATA = [];
         for (let i = 0; i < db_data.length; i++)
         {   
-            const obj = db_data[i];
+            let obj = db_data[i];
             result.push({
                 properties: {
                     title: obj.TITLE.id,
